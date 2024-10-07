@@ -1,0 +1,18 @@
+DROP FUNCTION IF EXISTS Division;
+
+DELIMITER //
+
+CREATE FUNCTION Division(num1 FLOAT, num2 FLOAT)
+RETURNS FLOAT 
+DETERMINISTIC 
+NO SQL
+BEGIN
+    DECLARE result FLOAT;
+    SET result = num1 / num2;
+    RETURN result;
+END //
+
+DELIMITER ;
+
+SELECT *, Division(quantity, 2) as divided_quantity
+FROM order_details
